@@ -1,0 +1,19 @@
+
+# Ignore all files in fasta_inputs except .gitkeep
+fasta_inputs/*
+!fasta_inputs/.gitkeep
+
+# Ignore all files in results and subfolders except .gitkeep
+!results/.gitkeep
+results/iqtree/*.treefile
+results/mafft/*.mafft
+results/trimal/*.trimal
+
+
+# Nextflow specific files
+.nextflow.log*
+.nextflow/
+work/
+
+# Mac specific file
+.DS_Store
