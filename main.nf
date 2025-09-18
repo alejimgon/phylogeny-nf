@@ -34,7 +34,7 @@ process BLASTP {
     blastp -query ${query_file} -db ${db_path} -out ${query_file.simpleName}.blast -evalue 0.001 -max_target_seqs ${num_seq} -num_threads 20 -outfmt '6 qaccver saccver pident evalue length qlen slen staxid'
     awk -F '\\t' '{print \$2}' ${query_file.simpleName}.blast | awk '!seen[\$1]++' | \\
       blastdbcmd -db ${db_path} -dbtype ${db_type} -entry_batch - -outfmt '%a %s' -target_only | \\
-      perl -pe 's/(\\w+\\.[0-9])\\s(.*)/>\\1\\n\\2/g' > ${query_file.simpleName}.faa
+      perl -pe 's/(\w+.[0-9])\s(.*)/>$1\n$2/g' > ${query_file.simpleName}.faa
     """
 }
 
